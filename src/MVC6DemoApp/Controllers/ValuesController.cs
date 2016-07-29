@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MVC6DemoApp.Entities;
 
 namespace MVC6DemoApp.Controllers
 {
@@ -11,9 +12,15 @@ namespace MVC6DemoApp.Controllers
     {
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            var users = new List<User>();
+
+            users.Add(new User() { Id = 1, Name = "Aftab Ansari" });
+            users.Add(new User() { Id = 2, Name = "Anshul Rana" });
+            users.Add(new User() { Id = 3, Name = "Rohit Kumar" });
+
+            return Ok(users);
         }
 
         // GET api/values/5
